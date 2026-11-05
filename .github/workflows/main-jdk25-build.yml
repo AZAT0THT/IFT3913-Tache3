@@ -18,10 +18,8 @@
 name: main jdk25 build
 
 on:
-  push:
-    branches: [ main ]
-    paths-ignore:
-      - 'docs/**'
+  workflow_dispatch:
+
 
 jobs:
   build:
