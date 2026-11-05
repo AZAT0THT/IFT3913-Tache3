@@ -18,8 +18,14 @@
 name: main jdk17 windows build (multi-locale)
 
 on:
-  workflow_dispatch:
-
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+      - 'docs/**'
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'docs/**'
 
 jobs:
   build:

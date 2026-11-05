@@ -18,8 +18,11 @@
 name: Docker snapshot - tika-server and tika-grpc
 
 on:
-  workflow_dispatch:
-
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'docs/**'
+      - '*.md'
 
 jobs:
   # Gate: publish snapshot images ONLY for -SNAPSHOT versions. The

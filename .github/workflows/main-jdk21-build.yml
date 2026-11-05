@@ -18,8 +18,10 @@
 name: main jdk21 build
 
 on:
-  workflow_dispatch:
-
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'docs/**'
 
 jobs:
   build:
