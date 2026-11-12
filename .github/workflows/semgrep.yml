@@ -1,0 +1,41 @@
+name: Semgrep
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Installer Python pour Semgrep
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Installer Semgrep
+        run: python -m pip install "semgrep==1.182.1"
+
+      - name: Bloquer les nouvelles vulnérabilités
+        run: |
+          semgrep scan \
+            --config p/java \
+            --metrics=off \
+            --jobs 2 \
+            --strict \
+            --baseline-commit 87ddf8c69ecfc276d5824e092083bbc10697d2d7 \
+            --error \
+            tika-core \
+            tika-serialization \
+            tika-parsers/tika-parsers-standard/tika-parsers-standard-modules/tika-parser-ocr-module \
+            tika-parsers/tika-parsers-standard/tika-parsers-standard-modules/tika-parser-pdf-module \
+            tika-parsers/tika-parsers-standard/tika-parsers-standard-modules/tika-parser-microsoft-module
+            
