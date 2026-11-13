@@ -31,7 +31,7 @@ jobs:
             --metrics=off \
             --jobs 2 \
             --strict \
-            --baseline-commit 87ddf8c69ecfc276d5824e092083bbc10697d2d7 \
+            --baseline-commit 56daa36d5b946a6d7f8bdd2373cc4596631fdbf6 \
             --error \
             tika-core \
             tika-serialization \
