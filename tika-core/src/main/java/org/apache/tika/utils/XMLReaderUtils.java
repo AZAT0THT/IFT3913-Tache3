@@ -283,8 +283,9 @@ public class XMLReaderUtils implements Serializable {
      */
     public static DocumentBuilder getDocumentBuilder() throws TikaException {
         try {
-            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilderFactory documentBuilderFactory = getDocumentBuilderFactory();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            documentBuilder.setEntityResolver(IGNORING_SAX_ENTITY_RESOLVER);
             documentBuilder.setErrorHandler(null);
             return documentBuilder;
         } catch (ParserConfigurationException e) {
