@@ -24,7 +24,11 @@ on:
       - 'docs/**'
 
 jobs:
+  semgrep:
+    uses: ./.github/workflows/semgrep.yml
+
   build:
+    needs: semgrep
     runs-on: ubuntu-latest
     timeout-minutes: 60
     strategy:
